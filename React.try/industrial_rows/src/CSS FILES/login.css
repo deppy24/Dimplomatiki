@@ -1,0 +1,99 @@
+/*Css of login page*/
+
+/*Works for the whole page */
+*{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: medium;
+    font-weight: lighter;
+}
+
+
+
+.screen{
+    background-color: #ffffff;
+    height: 600px;
+    width: 900px;
+
+}
+
+/*ΦΟΡΜΑ ΣΤΟΙΧΕΙΩΝ */
+.login{
+    background: rgb(156, 28, 141)#1b0668;
+    border: 2px solid rgb(26, 21, 21);
+    border-radius: 10px;
+    margin-top: -600px;
+    margin-bottom: 0px;
+    padding-top: 0px;
+    margin-left: 920px;
+    width: 300px;
+    height: 400px;
+    visibility: visible;
+    overflow: visible;
+    z-index: 10;
+    position: absolute;
+    box-shadow: -10px -10px rgb(223, 229, 231);
+   
+}
+
+/*ΠΕΔΙΑ ΦΟΡΜΑΣ */
+.loginfield{
+    margin-top: 10px;
+    margin-left: 60px;
+    text-align: center;
+    height: 50px;
+    width: 50px;
+    border: 2cqh round rgb(21, 12, 12); 
+    
+
+}
+
+/*ΚΟΥΜΠΙΑ ΦΟΡΜΑΣ  */
+.btnbtn-success000{
+    margin-left: 120px;
+    margin-top: 100px;
+    text-align: center;
+    width: 80px;
+    height: 30px;
+    background-color: rgb(210, 169, 64);;
+    border: 2px round rgb(210, 169, 64);;  
+}
+
+.btnbtn-success111{
+    margin-left: 120px;
+    text-align: center;
+    width: 80px;
+    height: 30px;
+    background-color: rgb(210, 169, 64);
+    border: 2px round rgb(210, 169, 64);
+}
+
+/*TEXT CSS OF LOGIN FIELDS */
+.formtexts{
+    height: 35px;
+    border: round;
+    width: 200px;
+    margin-left: -30px;
+}
+
+.oxiallo2{
+    margin-top: -90px;
+    margin-left: -10px;
+}
+
+.h555{
+    text-align: center;
+    font-size: 15px;
+    margin-left: -5px;
+}
+.h3{
+    text-align: center;
+    font-size: 30px;
+}
+
+.img{
+    width: 1300px;
+    height: 800px;
+    margin-left: 100px;
+    
+}
+

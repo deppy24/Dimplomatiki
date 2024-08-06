@@ -1,0 +1,37 @@
+
+.h1{
+    margin-left: 600px;
+    font-size: 20px;
+    font-weight: bold;
+}
+.jsontable{
+    margin-left: 500px;
+    margin-top: 50px;
+    border-collapse:collapse;
+    align-content: center;
+}
+.jsontable thead{
+    border: 2px dashed #090a0a;
+    height: 50px;
+    background-color: rgb(153, 170, 170);
+}
+.jsontable th{
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold,lighter;
+    font-size: 25px;
+    width: 200px;
+    
+}
+.jsontable tbody{
+    width: 200px;
+    height: 50px;
+    border: 2px dashed #1be66c;
+    text-align: center;
+    
+}
+.jsontable td{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    font-weight: light;
+    border: 2px dashed #1be66c;
+}

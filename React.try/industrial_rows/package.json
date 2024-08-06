@@ -1,0 +1,50 @@
+{
+  "name": "industrial_rows",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@iconify/icons-mdi": "^1.2.48",
+    "@iconify/react": "^4.1.1",
+    "@react-login-page/page8": "^1.0.4",
+    "@testing-library/jest-dom": "^5.17.0",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
+    "axios": "^1.6.8",
+    "bootstrap": "^5.3.3",
+    "google-map-react": "^2.2.1",
+    "googlefonts": "^1.1.3",
+    "mysql": "^2.18.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-icons": "^5.0.1",
+    "react-login-page": "^1.0.4",
+    "react-router-dom": "^6.22.3",
+    "react-scripts": "5.0.1",
+    "recharts": "^2.12.5",
+    "web-vitals": "^2.1.4"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}

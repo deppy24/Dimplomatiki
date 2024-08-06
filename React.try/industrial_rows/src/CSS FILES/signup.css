@@ -1,0 +1,92 @@
+
+.screen2{
+    background-color: #ffffff;
+    height: 600px;
+    width: 900px;
+
+}*/
+
+*{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: medium;
+    font-weight: lighter;
+}
+
+/*ΦΟΡΜΑ ΣΤΟΙΧΕΙΩΝ */
+.signup{
+    background: rgb(248, 251, 250);
+    border: 2px solid rgb(0, 0, 0);
+    border-radius: 10px;
+    margin-top: -500px;
+    margin-bottom: 0px;
+    padding-top: 0px;
+    margin-left: 495px;
+    width: 520px;
+    height: 400px;
+    overflow: visible;
+    z-index: 10;
+    position: absolute;
+    box-shadow: -10px -10px rgb(223, 229, 231);
+
+}
+
+/*ΠΕΔΙΑ ΦΟΡΜΑΣ */
+.signupfield{
+    margin-top: 10px;
+    margin-left: 80px;
+    text-align: center;
+    height: 50px;
+    width: 50px;
+    border: 2cqh round rgb(0, 0, 0); 
+    
+
+}
+
+/*ΚΟΥΜΠΙΑ ΦΟΡΜΑΣ  */
+.btnbtn-success{
+    margin-left: 120px;
+    margin-top: -1000px;
+    text-align: center;
+    width: 80px;
+    height: 30px;
+    background-color: rgb(210, 169, 64);
+    border: 2px round rgb(210, 169, 64);   
+}
+
+.btnbtn-success2{
+    margin-left: 120px;
+    text-align: center;
+    width: 80px;
+    height: 30px;
+    background-color: rgb(210, 169, 64);
+    border: 2px round rgb(210, 169, 64);
+}
+.formtexts{
+    height: 35px;
+    border: round;
+    width: 200px;
+    margin-left: -30px;
+}
+
+.h5{
+    text-align: center;
+    font-size: 15px;
+    font-style: italic;
+    margin-left: 50px;
+}
+.h3{
+    text-align: center;
+    font-size: 30px;
+}
+
+.img2{
+    width: 1300px;
+    height: 800px;
+    margin-left: 100px;
+    
+}
+
+.oxiallo{
+    margin-top: -200px;
+    margin-left: 250px;
+}
