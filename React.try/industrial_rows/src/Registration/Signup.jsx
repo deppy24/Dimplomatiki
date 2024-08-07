@@ -1,74 +1,74 @@
-import {useState, useNavigate, React} from 'react';
-import { Link} from 'react-router-dom';
-import { Button } from 'bootstrap';
+import {useState, React} from 'react';
+import { Link,useNavigate} from 'react-router-dom';
 import '../CSS FILES/signup.css';
-import { Submit } from '@react-login-page/page8';
-import axios, { AxiosHeaders } from 'axios';
-import image1 from '../Images/notitle.png'
+import axios from 'axios';
 
 const Demo2 = () =>{
-  //Declarations
-  //UseState: Declare a state variable, return an array with 2 values the initial and the one you pass->trigger a re-render 
-  const [Name, setName] = useState()
-  const [Surname, setSurname] = useState()
-  const [Phone, setPhone] = useState()
-  const [Email, setEmail] = useState()
-  const [Password, setPassword] = useState()
+	//Declarations
+	//UseState: Declare a state variable, return an array with 2 values the initial and the one you pass->trigger a re-render
+	const [Name, setName] = useState('');
+	const [Surname, setSurname] = useState('');
+	const [Phone, setPhone] = useState('');
+	const [Email, setEmail] = useState('');
+	const [Password, setPassword] = useState('');
 
-  //const navigate = useNavigate();
+	const navigate = useNavigate();
 
-  //
-  const handleChange =(event) =>{ 
-    switch (event.target.name) {
-    default: break;
-    case 'Name':
-        setName(event.target.value)
-    break;
-    case 'Surname':
-      setSurname(event.target.value)
-    break;
-    case 'Phone':
-      setPhone(event.target.value)
-    break;
-    case 'Email':
-      setEmail(event.target.value)
-    break;
-    case 'Password':
-      setPassword(event.target.value)
-    break;}
-  event.preventDefault(); 
-  }
-  
+	//
+	const handleChange = (event) => {
+		switch (event.target.name) {			
+			case 'Name':
+				setName(event.target.value);
+				break;
+			case 'Surname':
+				setSurname(event.target.value);
+				break;
+			case 'Phone':
+				setPhone(event.target.value);
+				break;
+			case 'Email':
+				setEmail(event.target.value);
+				break;
+			case 'Password':
+				setPassword(event.target.value);
+				break;
+      		default:
+				break;
+		}
+		event.preventDefault();
+	};
 
-  //
-  const handleSubmit =(event) =>{
-  event.preventDefault(); 
-  console.log(Name);
-  console.log(Surname);
-  console.log(Phone);
-  console.log(Email);
-  console.log(Password);
-  }
+	//
+	const handleSubmit = (event) => {
+		event.preventDefault();
+		console.log(Name);
+		console.log(Surname);
+		console.log(Phone);
+		console.log(Email);
+		console.log(Password);
+	};
 
-  //
-  const handleButton =async(event) =>{
-    event.preventDefault(); 
-    switch (event.target.name) {
-      default: break;
-      case 'button':
-      console.log("Με πάτησες")
-      console.log(Name)
-      console.log(Surname);
-      console.log(Phone);
-      console.log(Email);
-      console.log(Password);
-      const request = await axios.post("http://localhost:8081/Signup", {Name,Surname,Phone,Email,Password})
-      /*.then(res=>{
-        navigate('/Map');
-      })*/ //ψαξε πως να δειξεις ενα ποπ απ 
-      break;}
-  }
-
+	//
+	const handleButton = async (event) => {
+		event.preventDefault();
+		switch (event.target.name) {
+			case 'button':
+				console.log('Με πάτησες');
+				console.log(Name);
+				console.log(Surname);
+				console.log(Phone);
+				console.log(Email);
+				console.log(Password);
+				const request = await axios.post('http://localhost:8081/Signup', { Name, Surname, Phone, Email, Password });
+				if (request.status === 200) {
+					navigate('/');
+				}
+				//ψαξε πως να δειξεις ενα ποπ απ
+				break;
+			default:
+				break;
+		}
+	};
 
 //Main functionality  
 <div className='header'></div>
@@ -93,10 +93,10 @@ const Demo2 = () =>{
           <div className='signupfield'>
             <input type="text"  onChange={handleChange} placeholder='Password'  value={Password} className='formtexts' name='Password'></input>
           </div>
-          <div class="oxiallo">
-          <Link to='./Succes'><button onClick={handleButton} name="button" class="btnbtn-success">Sign up</button></Link> <br></br>
+          <div className="oxiallo">
+          <button onClick={handleButton} name="button" className="btnbtn-success">Sign up</button>
           <h5 className='h5'>Or return to the login page</h5>
-          <Link to='/'><button  class="btnbtn-success2">Login</button></Link>
+          <Link to='/'><button  className="btnbtn-success2">Login</button></Link>
           </div>
         </form>
       </div>
