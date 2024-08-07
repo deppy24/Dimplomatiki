@@ -10,9 +10,14 @@ import '../CSS FILES/Map.css';
 
 function Configuration() {
 	const [openSidebarToggle, setOpenSidebarToggle] = useState(false);
+	const [select, setSelectedOption] = useState('');
 
 	const OpenSidebar = () => {
 		setOpenSidebarToggle(!openSidebarToggle);
+	};
+
+	const handleChange = (event) => {
+		setSelectedOption(event.target.value);
 	};
 
 	const location = [
@@ -68,6 +73,33 @@ function Configuration() {
 								<button className='btn-goto'>Go to Dashboards</button>
 							</Link>
 						</div>
+					</div>
+					<div>
+						<form
+							action=''
+							className='formofpins'>
+							<label htmlFor='Location'>Choose your location:</label> <br />
+							<select
+								id='loc'
+								value={select}
+								onChange={handleChange}>
+								<option
+									value=''
+									name='empty'
+									disabled>
+									Select an option
+								</option>
+
+								{location.map((option, i) => (
+									<option
+										key={i}
+										value={i}>
+										{option.name}
+									</option>
+								))}								
+							</select>
+							<br />
+						</form>
 					</div>
 					<div className='google-map'>
 						<GoogleMapReact
