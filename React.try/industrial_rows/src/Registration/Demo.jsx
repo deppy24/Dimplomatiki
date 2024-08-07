@@ -1,6 +1,5 @@
 import {React, useState} from 'react';
-import { Link, NavLink, useNavigate} from 'react-router-dom';
-import { Button } from 'bootstrap';
+import { Link, useNavigate} from 'react-router-dom';
 import '../CSS FILES/login.css';
 import axios from 'axios';
 
@@ -53,12 +52,12 @@ function Demo () {
             <input type="text" onChange={handleChange} placeholder='Email' value={Email} name='Email' className='formtexts'></input>
           </div>
           <div className='loginfield'>
-            <input type="text" onChange={handleChange} placeholder='Password' value={Password} className='formtexts' name='Password'></input>
+            <input type="password" onChange={handleChange} placeholder='Password' value={Password} className='formtexts' name='Password'></input>
           </div>
           <div className='oxiallo2'>
-          <Link to='/DBOARD'><button onClick={handleButton}  name="button" type="button" class="btnbtn-success000">Login</button></Link> <br></br>
+          <Link to='/DBOARD'><button onClick={handleButton}  name="button" type="button" className="btnbtn-success000">Login</button></Link>
           <h5 className='h555'>If you do not have <br/> already an account,</h5>
-          <Link to='/Signup'><button type="button" class="btnbtn-success111"  >Sign up</button></Link>
+          <Link to='/Signup'><button type="button" className="btnbtn-success111"  >Sign up</button></Link>
           </div>
         </form>
       </div>
