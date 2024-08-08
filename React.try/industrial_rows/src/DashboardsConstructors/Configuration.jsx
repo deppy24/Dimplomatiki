@@ -6,11 +6,14 @@ import GoogleMapReact from 'google-map-react';
 import { Icon } from '@iconify/react';
 import locationIcon from '@iconify/icons-mdi/map-marker';
 import '../CSS FILES/Map.css';
+import { useNavigate } from 'react-router-dom';
 
 function Configuration() {
 	const [openSidebarToggle, setOpenSidebarToggle] = useState(false);
 	const [select, setSelectedOption] = useState('');
 	const [selectedPin, setSelectedPin] = useState(null);
+
+	const navigate = useNavigate();
 
 	const OpenSidebar = () => {
 		setOpenSidebarToggle(!openSidebarToggle);
@@ -21,14 +24,20 @@ function Configuration() {
 		setSelectedPin(locations[event.target.value]);
 	};
 
+	const handlePinClick = (selectedPin) => {
+		navigate(`/Templates?id=${selectedPin.id}`);
+	};
+
 	const locations = [
 		{
+			id: 1,
 			name: 'Επιλογή 1',
 			address: '14th km Thessaloniki, Νέα Μουδανιά 570 01',
 			lat: 40.53623903334093,
 			lng: 23.009268511780395,
 		},
 		{
+			id: 2,
 			name: 'Επιλογή 2',
 			address: 'Εγνατία 156, Θεσσαλονίκη 546 36',
 			lat: 40.625249019392484,
@@ -36,13 +45,15 @@ function Configuration() {
 		},
 	];
 
-	const LocationPin = ({ text }) => (
+	const LocationPin = ({ selectedPin }) => (
 		<div className='pin'>
 			<Icon
 				icon={locationIcon}
 				className='pin-icon'
 			/>
-			<p className='pin-text'>{text}</p>
+			<p className='pin-text'>
+				{selectedPin.address} <button onClick={() => handlePinClick(selectedPin)}>click me!</button>
+			</p>
 		</div>
 	);
 
@@ -84,9 +95,9 @@ function Configuration() {
 							defaultZoom={10}>
 							{selectedPin ? (
 								<LocationPin
+									selectedPin={selectedPin}
 									lat={selectedPin.lat}
 									lng={selectedPin.lng}
-									text={selectedPin.address}
 									name={selectedPin.buildingname}
 								/>
 							) : (
