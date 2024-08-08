@@ -10,6 +10,7 @@ import '../CSS FILES/Map.css';
 function Configuration() {
 	const [openSidebarToggle, setOpenSidebarToggle] = useState(false);
 	const [select, setSelectedOption] = useState('');
+	const [selectedPin, setSelectedPin] = useState(null);
 
 	const OpenSidebar = () => {
 		setOpenSidebarToggle(!openSidebarToggle);
@@ -17,32 +18,21 @@ function Configuration() {
 
 	const handleChange = (event) => {
 		setSelectedOption(event.target.value);
+		setSelectedPin(locations[event.target.value]);
 	};
 
-	const location = [
+	const locations = [
 		{
-			name: 'Διεθνές Πανεπιστήμιο Ελλάδας',
+			name: 'Επιλογή 1',
 			address: '14th km Thessaloniki, Νέα Μουδανιά 570 01',
 			lat: 40.53623903334093,
 			lng: 23.009268511780395,
 		},
 		{
-			name: 'Πανεπιστήμιο Μακεδονίας',
+			name: 'Επιλογή 2',
 			address: 'Εγνατία 156, Θεσσαλονίκη 546 36',
 			lat: 40.625249019392484,
 			lng: 22.960205055964213,
-		},
-		{
-			name: 'Αριστοτέλειο Πανεπιστήμιο Θεσσαλονίκης',
-			address: '14th km Thessaloniki, Νέα Μουδανιά 570 01',
-			lat: 40.53630426420577,
-			lng: 23.00919340992946,
-		},
-		{
-			name: 'Διεθνές Πανεπιστήμιο Ελλάδας',
-			address: '14th km Thessaloniki, Νέα Μουδανιά 570 01',
-			lat: 40.53623903334093,
-			lng: 23.009268511780395,
 		},
 	];
 
@@ -78,7 +68,7 @@ function Configuration() {
 								Select an option
 							</option>
 
-							{location.map((option, i) => (
+							{locations.map((option, i) => (
 								<option
 									key={i}
 									value={i}>
@@ -90,17 +80,18 @@ function Configuration() {
 					<div className='google-map'>
 						<GoogleMapReact
 							bootstrapURLKeys={{ key: 'AIzaSyDsglBBOSMgYp9Wn7hPnC4HiYfy5eXintM' }}
-							defaultCenter={location[0]}
+							defaultCenter={locations[0]}
 							defaultZoom={10}>
-							{location.map((loc, index) => (
+							{selectedPin ? (
 								<LocationPin
-									key={index}
-									lat={loc.lat}
-									lng={loc.lng}
-									text={loc.address}
-									name={loc.buildingname}
+									lat={selectedPin.lat}
+									lng={selectedPin.lng}
+									text={selectedPin.address}
+									name={selectedPin.buildingname}
 								/>
-							))}
+							) : (
+								''
+							)}
 						</GoogleMapReact>
 					</div>
 				</div>
