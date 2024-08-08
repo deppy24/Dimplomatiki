@@ -10,6 +10,7 @@ function Login() {
 	const navigate = useNavigate();
 
 	const handleButton = async (event) => {
+		event.preventDefault();
 		switch (event.target.name) {
 			case 'loginButton':
 				const request = await axios.post('http://localhost:8081/Login', { Email, Password });
@@ -23,10 +24,11 @@ function Login() {
 				break;
 			default:
 				break;
-		}
+		}		
 	};
 
 	const handleChange = (event) => {
+		event.preventDefault();
 		switch (event.target.name) {
 			case 'Email':
 				setEmail(event.target.value);
