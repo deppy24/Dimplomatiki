@@ -4,6 +4,7 @@ const express = require('express');
 const mysql = require('mysql');
 const cors = require('cors');
 const jwt = require('jsonwebtoken');
+const fs = require('fs');
 
 const createError = require('http-errors');
 const app = express();
@@ -67,6 +68,29 @@ app.post('/Login', async (req, res) => {
 		console.log(error);
 		res.send(500, 'Σφάλμα κατά την ανάκτηση από την βάση δεδομένων.');
 	}
+});
+
+app.get('/stream-data', (req, res) => {
+	const jsonData = JSON.parse(fs.readFileSync('./SCM_measurements.json', 'utf-8'));
+	const entriesCount = 6421;
+	res.setHeader('Content-Type', 'application/json');
+
+	let i = 0;
+	const interval = setInterval(() => {
+		console.log(jsonData[(i + 1).toString()]);
+		if (i < entriesCount) {
+			res.write(JSON.stringify(jsonData[i + 1]) + '\n');
+			i++;
+		} else {
+			clearInterval(interval);
+			res.end();
+		}
+	}, 1000); // Adjust the interval as needed (1000ms = 1 second)
+
+	req.on('close', () => {
+		clearInterval(interval); // Clear interval if connection closes
+		console.log('Client disconnected');
+	});
 });
 
 app.listen(8081, () => {
