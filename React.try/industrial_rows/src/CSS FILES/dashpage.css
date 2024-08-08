@@ -128,7 +128,7 @@
 	width: calc(100vw - 260px);
 }
 
-.main-conatiner .map{
+.main-conatiner .map {
 	height: 100%;
-	width: calc(100% - 250px);
+	width: 100%;
 }

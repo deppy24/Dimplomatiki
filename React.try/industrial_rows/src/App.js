@@ -1,5 +1,5 @@
 
-import {BrowserRouter, Routes, Route,} from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import DBOARD from './DashboardsConstructors/DBOARD.jsx';
 import Demo from './Registration/Demo.jsx';
 import Demo2 from './Registration/Signup.jsx';
@@ -7,9 +7,8 @@ import Templates from './DashboardsConstructors/Reports.jsx';
 import Tabletry from './Tabletry.jsx';
 import Categories from './DashboardsConstructors/Categories.jsx';
 import Configuration from './DashboardsConstructors/Configuration.jsx';
-import Notes from "./Notes part/Notes.jsx"
-import Map from './Map';
-import PrivateRoute from './PrivateRoute.jsx'
+import Notes from './Notes part/Notes.jsx';
+import PrivateRoute from './PrivateRoute.jsx';
 
 function App() {
   return (
@@ -18,7 +17,6 @@ function App() {
         <Route path='/' element={<Demo></Demo>} ></Route>
         <Route path='/Signup' element={<Demo2></Demo2>}></Route>
         
-        <Route  path='/Map' element={<PrivateRoute>{<Map></Map>}</PrivateRoute>} ></Route >
         <Route  path='/DBOARD' element={<PrivateRoute>{<DBOARD></DBOARD>}</PrivateRoute>}></Route >
         <Route  path='/Templates' element={<PrivateRoute>{<Templates></Templates>}</PrivateRoute>}></Route >
         <Route  path='/Json' element={<PrivateRoute>{<Tabletry></Tabletry>}</PrivateRoute>}></Route >
