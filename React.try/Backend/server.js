@@ -11,7 +11,7 @@ app.use(cors());
 app.use(express.json());
 
 let router = express.Router();
-let jwtSecret = 'your_super_secret_jwt';
+let jwtSecret = 'your_jwt_secret';
 
 //Db connection
 const db = mysql.createConnection({
