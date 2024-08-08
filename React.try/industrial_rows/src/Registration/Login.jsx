@@ -3,14 +3,13 @@ import { useNavigate } from 'react-router-dom';
 import '../CSS FILES/login.css';
 import axios from 'axios';
 
-function Demo() {
+function Login() {
 	const [Email, setEmail] = useState('');
 	const [Password, setPassword] = useState('');
 
 	const navigate = useNavigate();
 
 	const handleButton = async (event) => {
-		event.preventDefault();
 		switch (event.target.name) {
 			case 'loginButton':
 				const request = await axios.post('http://localhost:8081/Login', { Email, Password });
@@ -36,28 +35,58 @@ function Demo() {
 				setPassword(event.target.value);
 				break;
 			default:
-				break;;
+				break;
 		}
-		event.preventDefault(); 
 	};
 
-	<div className='header'></div>;
 	return (
 		<div className='screen'>
 			<div className='loginpage'>
-				<img className='img' src='https://files.codingninjas.in/article_images/custom-upload-1711630449-fc5893a1.webp' alt='logineikona' />
-				<form action='' className='login'>
+				<img
+					className='img'
+					src='https://files.codingninjas.in/article_images/custom-upload-1711630449-fc5893a1.webp'
+					alt='logineikona'
+				/>
+				<form
+					action=''
+					className='login'>
 					<h3 className='h3'>Login</h3>
 					<div className='loginfield'>
-						<input type='text' onChange={handleChange} placeholder='Email' value={Email} name='Email' className='formtexts'></input>
+						<input
+							type='text'
+							onChange={handleChange}
+							placeholder='Email'
+							value={Email}
+							name='Email'
+							className='formtexts'></input>
 					</div>
 					<div className='loginfield'>
-						<input type='password' onChange={handleChange} placeholder='Password' value={Password} className='formtexts' name='Password'></input>
+						<input
+							type='password'
+							onChange={handleChange}
+							placeholder='Password'
+							value={Password}
+							className='formtexts'
+							name='Password'></input>
 					</div>
 					<div className='oxiallo2'>
-						<button onClick={handleButton} name='loginButton' type='submit' className='btnbtn-success000'>Login</button>
-						<h5 className='h555'>If you do not have <br /> already an account,</h5>
-						<button onClick={handleButton} type='button' name='signupButton' className='btnbtn-success111'>Sign up</button>
+						<button
+							onClick={handleButton}
+							name='loginButton'
+							type='submit'
+							className='btnbtn-success000'>
+							Login
+						</button>
+						<h5 className='h555'>
+							If you do not have <br /> already an account,
+						</h5>
+						<button
+							onClick={handleButton}
+							type='button'
+							name='signupButton'
+							className='btnbtn-success111'>
+							Sign up
+						</button>
 					</div>
 				</form>
 			</div>
@@ -65,7 +94,7 @@ function Demo() {
 	);
 }
 
-export default Demo;
+export default Login;
 //https://cdn-lite.ip2location.com/img/sign-up.png
 
 //https://media.designrush.com/articles/265420/conversions/product-and-industrial-design-details.jpg
