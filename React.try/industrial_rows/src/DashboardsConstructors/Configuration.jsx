@@ -5,7 +5,6 @@ import React, { useState } from 'react';
 import GoogleMapReact from 'google-map-react';
 import { Icon } from '@iconify/react';
 import locationIcon from '@iconify/icons-mdi/map-marker';
-import { Link } from 'react-router-dom';
 import '../CSS FILES/Map.css';
 
 function Configuration() {
@@ -66,40 +65,27 @@ function Configuration() {
 			/>
 			<div className='main-conatiner'>
 				<div className='map'>
-					<div className='header'>
-						<h2 className='map-h2'>Enter your data device</h2>
-						<div className='button'>
-							<Link to='/DBOARD'>
-								<button className='btn-goto'>Go to Dashboards</button>
-							</Link>
-						</div>
-					</div>
-					<div>
-						<form
-							action=''
-							className='formofpins'>
-							<label htmlFor='Location'>Choose your location:</label> <br />
-							<select
-								id='loc'
-								value={select}
-								onChange={handleChange}>
-								<option
-									value=''
-									name='empty'
-									disabled>
-									Select an option
-								</option>
+					<div className='formofpins'>
+						<label htmlFor='Location'>Choose your location:</label> <br />
+						<select
+							id='loc'
+							value={select}
+							onChange={handleChange}>
+							<option
+								value=''
+								name='empty'
+								disabled>
+								Select an option
+							</option>
 
-								{location.map((option, i) => (
-									<option
-										key={i}
-										value={i}>
-										{option.name}
-									</option>
-								))}								
-							</select>
-							<br />
-						</form>
+							{location.map((option, i) => (
+								<option
+									key={i}
+									value={i}>
+									{option.name}
+								</option>
+							))}
+						</select>
 					</div>
 					<div className='google-map'>
 						<GoogleMapReact

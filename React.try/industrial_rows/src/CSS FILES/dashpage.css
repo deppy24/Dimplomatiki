@@ -125,5 +125,10 @@
 
 .main-conatiner {
 	height: 100vh;
-	margin-top: -55px;
+	width: calc(100vw - 260px);
+}
+
+.main-conatiner .map{
+	height: 100%;
+	width: calc(100% - 250px);
 }

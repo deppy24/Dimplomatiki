@@ -71,19 +71,20 @@
 	font-size: medium;
 	font-weight: lighter;
 }
-.google-map {
-	width: 1200px;
-	margin-left: 250px;
-  height: calc(100vh - 75px);
-}
 
 .formofpins {
 	visibility: visible;
 	position: absolute;
+	margin: 25px;
 }
 
 .formofpins select {
 	max-width: 200px;
+}
+
+.google-map {
+	height: 100%;
+	margin-left: 250px;
 }
 
 .circle {
