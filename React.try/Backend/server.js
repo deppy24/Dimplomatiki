@@ -84,6 +84,7 @@ app.get('/stream-data', (req, res) => {
 	const interval = setInterval(() => {
 		if (i < entriesCount) {
 			if (id == 2) {
+				// simulating a different stream
 				const a = 0.2;
 				jsonData[i + 1].value_ISO *= getRandomFactor(a);
 				jsonData[i + 1].value_DEMO *= getRandomFactor(a);
