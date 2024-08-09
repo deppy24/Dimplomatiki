@@ -71,21 +71,33 @@ app.post('/Login', async (req, res) => {
 });
 
 app.get('/stream-data', (req, res) => {
+	const id = req.query.id;
 	const jsonData = JSON.parse(fs.readFileSync('./SCM_measurements.json', 'utf-8'));
 	const entriesCount = 6421;
 	res.setHeader('Content-Type', 'application/json');
-
 	let i = 0;
+
+	getRandomFactor = (a) => {
+		return 1 - a + Math.random() * a;
+	};
+
 	const interval = setInterval(() => {
-		console.log(jsonData[(i + 1).toString()]);
 		if (i < entriesCount) {
+			if (id == 2) {
+				const a = 0.2;
+				jsonData[i + 1].value_ISO *= getRandomFactor(a);
+				jsonData[i + 1].value_DEMO *= getRandomFactor(a);
+				jsonData[i + 1].value_ACC *= getRandomFactor(a);
+				jsonData[i + 1].value_P2P *= getRandomFactor(a);
+				jsonData[i + 1].valueTEMP *= getRandomFactor(a);
+			}
 			res.write(JSON.stringify(jsonData[i + 1]) + '\n');
 			i++;
 		} else {
 			clearInterval(interval);
 			res.end();
 		}
-	}, 1000); // Adjust the interval as needed (1000ms = 1 second)
+	}, 5000); // Adjust the interval as needed (1000ms = 1 second)
 
 	req.on('close', () => {
 		clearInterval(interval); // Clear interval if connection closes

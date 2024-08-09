@@ -4,6 +4,7 @@ import { React, useState, useEffect } from 'react';
 import Sidebar from '../DashboardsConstructors/Sidebar.jsx';
 import '../CSS FILES/dashpage.css';
 import './Header.jsx';
+import { useLocation  } from 'react-router-dom';
 import {
 	RadarChart,
 	PolarGrid,
@@ -17,7 +18,12 @@ import {
 	PolarRadiusAxis,
 	AreaChart,
 	Area,
+	Legend,
 } from 'recharts';
+
+function useQuery() {
+	return new URLSearchParams(useLocation().search);
+  }
 
 function Templates() {
 	const [openSidebarToggle, setOpenSidebarToggle] = useState(false);
@@ -27,6 +33,9 @@ function Templates() {
 	};
 	const [data, setData] = useState([]);
 
+	const query = useQuery();
+	const id = query.get('id');
+
 	const properties = ['value_ISO', 'value_DEMO', 'value_ACC', 'value_P2P', 'valueTEMP'];
 
 	useEffect(() => {
@@ -34,7 +43,7 @@ function Templates() {
 		const { signal } = controller;
 
 		const fetchData = async () => {
-			const response = await fetch('http://localhost:8081/stream-data', { signal });
+			const response = await fetch(`http://localhost:8081/stream-data?id=${id}`, { signal });
 			const reader = response.body.getReader();
 			const decoder = new TextDecoder('utf-8');
 			try {
@@ -49,7 +58,7 @@ function Templates() {
 							...prevData,
 							...chunk.map((item) => {
 								const newItem = JSON.parse(item);
-								newItem.dateObj = new Date(newItem.date);
+								newItem.formatedDate = new Date(newItem.date).toLocaleString();
 								return newItem;
 							}),
 						];
@@ -93,7 +102,7 @@ function Templates() {
 							bottom: 0,
 						}}>
 						<CartesianGrid strokeDasharray='3 3' />
-						<XAxis dataKey='dateObj' />
+						<XAxis dataKey='formatedDate' />
 						<YAxis />
 						<Tooltip />
 						<Area
@@ -136,6 +145,7 @@ function Templates() {
 				<div className='spiders'>
 					{properties.map((property) => (
 						<ResponsiveContainer
+							key={property}
 							width='20%'
 							height={400}>
 							<RadarChart
@@ -144,8 +154,10 @@ function Templates() {
 								outerRadius='80%'
 								data={data}>
 								<PolarGrid />
-								<PolarAngleAxis dataKey='dateObj' />
+								<PolarAngleAxis dataKey='formatedDate' />
 								<PolarRadiusAxis />
+								<Tooltip />
+								<Legend />
 								<Radar
 									name={property}
 									dataKey={property}

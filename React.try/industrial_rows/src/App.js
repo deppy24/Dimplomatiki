@@ -3,7 +3,6 @@ import DBOARD from './DashboardsConstructors/DBOARD.jsx';
 import Login from './Registration/Login.jsx';
 import Demo2 from './Registration/Signup.jsx';
 import Templates from './DashboardsConstructors/Reports.jsx';
-import Tabletry from './Tabletry.jsx';
 import Categories from './DashboardsConstructors/Categories.jsx';
 import Configuration from './DashboardsConstructors/Configuration.jsx';
 import Notes from './Notes part/Notes.jsx';
@@ -26,9 +25,6 @@ function App() {
 				<Route
 					path='/Templates'
 					element={<PrivateRoute>{<Templates></Templates>}</PrivateRoute>}></Route>
-				<Route
-					path='/Json'
-					element={<PrivateRoute>{<Tabletry></Tabletry>}</PrivateRoute>}></Route>
 				<Route
 					path='/Categories'
 					element={<PrivateRoute>{<Categories></Categories>}</PrivateRoute>}></Route>
