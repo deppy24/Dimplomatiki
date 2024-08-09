@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import DBOARD from './DashboardsConstructors/DBOARD.jsx';
 import Login from './Registration/Login.jsx';
-import Demo2 from './Registration/Signup.jsx';
+import Signup from './Registration/Signup.jsx';
 import Templates from './DashboardsConstructors/Reports.jsx';
 import Categories from './DashboardsConstructors/Categories.jsx';
 import Configuration from './DashboardsConstructors/Configuration.jsx';
@@ -17,7 +17,7 @@ function App() {
 					element={<Login></Login>}></Route>
 				<Route
 					path='/Signup'
-					element={<Demo2></Demo2>}></Route>
+					element={<Signup></Signup>}></Route>
 
 				<Route
 					path='/DBOARD'

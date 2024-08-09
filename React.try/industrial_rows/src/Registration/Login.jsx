@@ -1,11 +1,22 @@
-import { React, useState } from 'react';
+import { React, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../CSS FILES/login.css';
 import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function Login() {
 	const [Email, setEmail] = useState('');
 	const [Password, setPassword] = useState('');
+
+	useEffect(() => {
+		const queryParams = new URLSearchParams(window.location.search);
+		const success = queryParams.get('success');
+
+		if (success != null) {
+			toast.success('You have signed up successfully!');
+		}
+	}, []);
 
 	const navigate = useNavigate();
 
@@ -24,7 +35,7 @@ function Login() {
 				break;
 			default:
 				break;
-		}		
+		}
 	};
 
 	const handleChange = (event) => {
@@ -92,6 +103,18 @@ function Login() {
 					</div>
 				</form>
 			</div>
+			<ToastContainer
+				position='top-center'
+				autoClose={5000}
+				hideProgressBar={false}
+				newestOnTop={false}
+				closeOnClick
+				rtl={false}
+				pauseOnFocusLoss
+				draggable={false}
+				pauseOnHover
+				theme='light'
+			/>
 		</div>
 	);
 }
