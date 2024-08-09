@@ -134,6 +134,10 @@
 	width: 100%;
 }
 
-.spiders .recharts-responsive-container{
+.main-conatiner h1 {
+	text-align: center;
+}
+
+.spiders .recharts-responsive-container {
 	display: inline-block;
 }

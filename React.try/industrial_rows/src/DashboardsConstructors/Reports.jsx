@@ -4,7 +4,7 @@ import { React, useState, useEffect } from 'react';
 import Sidebar from '../DashboardsConstructors/Sidebar.jsx';
 import '../CSS FILES/dashpage.css';
 import './Header.jsx';
-import { useLocation  } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import {
 	RadarChart,
 	PolarGrid,
@@ -23,7 +23,7 @@ import {
 
 function useQuery() {
 	return new URLSearchParams(useLocation().search);
-  }
+}
 
 function Templates() {
 	const [openSidebarToggle, setOpenSidebarToggle] = useState(false);
@@ -43,10 +43,10 @@ function Templates() {
 		const { signal } = controller;
 
 		const fetchData = async () => {
-			const response = await fetch(`http://localhost:8081/stream-data?id=${id}`, { signal });
-			const reader = response.body.getReader();
-			const decoder = new TextDecoder('utf-8');
 			try {
+				const response = await fetch(`http://localhost:8081/stream-data?id=${id}`, { signal });
+				const reader = response.body.getReader();
+				const decoder = new TextDecoder('utf-8');
 				while (true) {
 					const { done, value } = await reader.read();
 					if (done) break;
@@ -78,7 +78,7 @@ function Templates() {
 		return () => {
 			controller.abort(); // Abort the fetch request when the component unmounts
 		};
-	}, []);
+	}, [id]);
 
 	return (
 		<div className='grid-container'>
@@ -88,6 +88,7 @@ function Templates() {
 				OpenSidebar={OpenSidebar}
 			/>
 			<div className='main-conatiner'>
+				<h1>Charts</h1>
 				<ResponsiveContainer
 					width='100%'
 					height={400}>
