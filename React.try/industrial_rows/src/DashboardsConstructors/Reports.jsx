@@ -4,7 +4,7 @@ import { React, useState, useEffect } from 'react';
 import Sidebar from '../DashboardsConstructors/Sidebar.jsx';
 import '../CSS FILES/dashpage.css';
 import './Header.jsx';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import {
 	RadarChart,
 	PolarGrid,
@@ -35,8 +35,10 @@ function Templates() {
 
 	const query = useQuery();
 	const id = query.get('id');
+	const token = localStorage.getItem('token');
 
 	const properties = ['value_ISO', 'value_DEMO', 'value_ACC', 'value_P2P', 'valueTEMP'];
+	const navigate = useNavigate();
 
 	useEffect(() => {
 		const controller = new AbortController();
@@ -44,7 +46,18 @@ function Templates() {
 
 		const fetchData = async () => {
 			try {
-				const response = await fetch(`http://localhost:8081/stream-data?id=${id}`, { signal });
+				const response = await fetch(`http://localhost:8081/stream-data?id=${id}`, {
+					headers: {
+						Authorization: token,
+					},
+					signal,
+				});
+
+				if (response.status !== 200) {
+					navigate('/');
+					return;
+				}
+
 				const reader = response.body.getReader();
 				const decoder = new TextDecoder('utf-8');
 				while (true) {
@@ -78,7 +91,7 @@ function Templates() {
 		return () => {
 			controller.abort(); // Abort the fetch request when the component unmounts
 		};
-	}, [id]);
+	}, [id, navigate, token]);
 
 	return (
 		<div className='grid-container'>

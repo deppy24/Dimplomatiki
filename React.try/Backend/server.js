@@ -13,6 +13,7 @@ app.use(express.json());
 
 let router = express.Router();
 let jwtSecret = 'your_jwt_secret';
+const authenticateToken = require('./auth');
 
 //Db connection
 const db = mysql.createConnection({
@@ -70,7 +71,7 @@ app.post('/Login', async (req, res) => {
 	}
 });
 
-app.get('/stream-data', (req, res) => {
+app.get('/stream-data', authenticateToken, (req, res) => {
 	const id = req.query.id;
 	const jsonData = JSON.parse(fs.readFileSync('./SCM_measurements.json', 'utf-8'));
 	const entriesCount = 6421;
