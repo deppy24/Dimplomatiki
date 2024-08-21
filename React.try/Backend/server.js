@@ -73,8 +73,7 @@ app.post('/Login', async (req, res) => {
 
 app.get('/stream-data', authenticateToken, (req, res) => {
 	const id = req.query.id;
-	const jsonOriginal = JSON.parse(fs.readFileSync('./SCM_measurements.json', 'utf-8'));
-	var jsonData = { ...jsonOriginal };
+	var jsonData = JSON.parse(fs.readFileSync('./SCM_measurements.json', 'utf-8'));
 	const entriesCount = 6421;
 	res.setHeader('Content-Type', 'application/json');
 	let i = 0;
@@ -93,12 +92,12 @@ app.get('/stream-data', authenticateToken, (req, res) => {
 				jsonData[i + 1].value_ACC *= getRandomFactor(a);
 				jsonData[i + 1].value_P2P *= getRandomFactor(a);
 				jsonData[i + 1].valueTEMP *= getRandomFactor(a);
+				jsonData[i + 1].failure = Math.random() < a ? 1 : 0;
 			}
 			res.write(JSON.stringify(jsonData[i + 1]) + '\n');
 			i++;
 		} else {
 			i = 0;
-			jsonData = { ...jsonOriginal };
 		}
 	}, 5000); // Adjust the interval as needed (1000ms = 1 second)
 

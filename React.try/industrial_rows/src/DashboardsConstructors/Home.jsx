@@ -1,9 +1,5 @@
-//access via DBOARD path
-//import { Size } from 'devextreme-react/cjs/bar-gauge';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BsPeopleFill, BsFillBellFill, BsFillClockFill } from 'react-icons/bs';
-//import mainnotes from '../Notes part/mainnotes';
-//import sidebarnotes from '../Notes part/sidebarnotes';
 
 //Gets current Date and Time (the moment we enter the page or refresh not continuously)
 function getDate() {
@@ -14,10 +10,10 @@ function getDate() {
 	const hour = today.getHours();
 	const minutes = today.getMinutes();
 	const seconds = today.getSeconds();
-	return `${'CURRENT DATE:'} ${month}/${date}/${year}                              ` + `${'CURRENT TIME:'}${hour}:${minutes}:${seconds}`;
+	return `${'CURRENT DATE:'} ${month}/${date}/${year} ${'CURRENT TIME:'}${hour}:${minutes}:${seconds}`;
 }
 
-function Home() {
+function Home({ errors1, errors2 }) {
 	const [currentDate, setCurrentDate] = useState(getDate());
 
 	return (
@@ -47,7 +43,7 @@ function Home() {
 						<h3>ALERTS</h3>
 						<BsFillBellFill className='card_icon' />
 					</div>
-					<h1>42</h1>
+					<h1>{`${errors1}|${errors2}`}</h1>
 				</div>
 			</div>
 

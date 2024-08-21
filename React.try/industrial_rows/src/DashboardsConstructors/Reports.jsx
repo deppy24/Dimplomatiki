@@ -4,7 +4,7 @@ import { React, useState, useEffect } from 'react';
 import Sidebar from '../DashboardsConstructors/Sidebar.jsx';
 import '../CSS FILES/dashpage.css';
 import './Header.jsx';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import {
 	RadarChart,
 	PolarGrid,
@@ -25,73 +25,22 @@ function useQuery() {
 	return new URLSearchParams(useLocation().search);
 }
 
-function Templates() {
+function Templates({ data1, data2 }) {
 	const [openSidebarToggle, setOpenSidebarToggle] = useState(false);
+	const [data, setData] = useState([]);
 
 	const OpenSidebar = () => {
 		setOpenSidebarToggle(!openSidebarToggle);
 	};
-	const [data, setData] = useState([]);
 
 	const query = useQuery();
-	const id = query.get('id');
-	const token = localStorage.getItem('token');
+	const id = +query.get('id');
 
 	const properties = ['value_ISO', 'value_DEMO', 'value_ACC', 'value_P2P', 'valueTEMP'];
-	const navigate = useNavigate();
 
 	useEffect(() => {
-		const controller = new AbortController();
-		const { signal } = controller;
-
-		const fetchData = async () => {
-			try {
-				const response = await fetch(`http://localhost:8081/stream-data?id=${id}`, {
-					headers: {
-						Authorization: token,
-					},
-					signal,
-				});
-
-				if (response.status !== 200) {
-					navigate('/');
-					return;
-				}
-
-				const reader = response.body.getReader();
-				const decoder = new TextDecoder('utf-8');
-				while (true) {
-					const { done, value } = await reader.read();
-					if (done) break;
-
-					const chunk = decoder.decode(value).split('\n').filter(Boolean);
-
-					setData((prevData) => {
-						const d = [
-							...prevData,
-							...chunk.map((item) => {
-								const newItem = JSON.parse(item);
-								newItem.formatedDate = new Date(newItem.date).toLocaleString();
-								return newItem;
-							}),
-						];
-						return d.slice(-10);
-					});
-				}
-			} catch (err) {
-				if (err.name === 'AbortError') {
-					console.log('Fetch aborted');
-				} else {
-					console.error('Fetch error:', err);
-				}
-			}
-		};
-
-		fetchData();
-		return () => {
-			controller.abort(); // Abort the fetch request when the component unmounts
-		};
-	}, [id, navigate, token]);
+		setData(id === 2 ? data2 : data1);
+	}, [data1, data2, id]);
 
 	return (
 		<div className='grid-container'>
