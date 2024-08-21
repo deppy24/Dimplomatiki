@@ -73,7 +73,8 @@ app.post('/Login', async (req, res) => {
 
 app.get('/stream-data', authenticateToken, (req, res) => {
 	const id = req.query.id;
-	const jsonData = JSON.parse(fs.readFileSync('./SCM_measurements.json', 'utf-8'));
+	const jsonOriginal = JSON.parse(fs.readFileSync('./SCM_measurements.json', 'utf-8'));
+	var jsonData = { ...jsonOriginal };
 	const entriesCount = 6421;
 	res.setHeader('Content-Type', 'application/json');
 	let i = 0;
@@ -96,8 +97,8 @@ app.get('/stream-data', authenticateToken, (req, res) => {
 			res.write(JSON.stringify(jsonData[i + 1]) + '\n');
 			i++;
 		} else {
-			clearInterval(interval);
-			res.end();
+			i = 0;
+			jsonData = { ...jsonOriginal };
 		}
 	}, 5000); // Adjust the interval as needed (1000ms = 1 second)
 
