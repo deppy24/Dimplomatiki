@@ -5,7 +5,7 @@ import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-function Login() {
+function Login({ onLogin }) {
 	const [Email, setEmail] = useState('');
 	const [Password, setPassword] = useState('');
 
@@ -27,6 +27,7 @@ function Login() {
 				const request = await axios.post('http://localhost:8081/Login', { Email, Password });
 				if (request.status === 200) {
 					localStorage.setItem('token', request.data.token);
+					onLogin(true);
 					navigate('/DBOARD');
 				}
 				break;

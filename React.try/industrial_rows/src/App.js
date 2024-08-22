@@ -8,14 +8,20 @@ import Configuration from './DashboardsConstructors/Configuration.jsx';
 import Notes from './Notes part/Notes.jsx';
 import PrivateRoute from './PrivateRoute.jsx';
 import { useEffect, useState } from 'react';
+import { isAuthenticated } from './AuthHelper.js';
 
 function App() {
+	const [trigger, triggerRequest] = useState(false);
 	const [data1, setData1] = useState([]);
 	const [data2, setData2] = useState([]);
 	const [errors1, setErrors1] = useState(0);
 	const [errors2, setErrors2] = useState(0);
 
 	useEffect(() => {
+		if (!isAuthenticated()) {
+			return;
+		}
+
 		const controller = new AbortController();
 		const { signal } = controller;
 		const token = localStorage.getItem('token');
@@ -73,14 +79,14 @@ function App() {
 		return () => {
 			controller.abort(); // Abort the fetch request when the component unmounts
 		};
-	}, []);
+	}, [trigger]);
 
 	return (
 		<BrowserRouter>
 			<Routes>
 				<Route
 					path='/'
-					element={<Login></Login>}></Route>
+					element={<Login onLogin={triggerRequest}></Login>}></Route>
 				<Route
 					path='/Signup'
 					element={<Signup></Signup>}></Route>
