@@ -27,13 +27,13 @@ function Home({ errors1, errors2 }) {
 					<div className='card-inner'>
 						<BsFillClockFill className='one_card_icon' />
 					</div>
-					<h2 className='h2date'> TIME</h2>
+					<h2 className='h2date'>ΧΡΟΝΟΣ</h2>
 					<h1 className='Datetime'>{currentDate}</h1>
 				</div>
 
 				<div className='card'>
 					<div className='card-inner'>
-						<h3>CUSTOMERS</h3>
+						<h3>ΧΡΗΣΤΕΣ</h3>
 						<BsPeopleFill className='card_icon' />
 					</div>
 					<h1>15</h1>

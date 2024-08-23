@@ -49,6 +49,8 @@
 .main-content {
 	height: 50px;
 	margin-top: 200px;
+	
+	
 }
 
 .Tree {
@@ -67,6 +69,8 @@
 		'sidebar header header header'
 		'sidebar main main main';
 	height: 100vh;
+	background-color: #e2e8eb;
+	
 }
 
 #sidebar {
@@ -132,6 +136,7 @@
 .main-conatiner .map {
 	height: 100%;
 	width: 100%;
+	background-color: #e2e8eb;
 }
 
 .main-conatiner h1 {

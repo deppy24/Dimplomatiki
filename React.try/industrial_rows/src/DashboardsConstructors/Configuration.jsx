@@ -31,15 +31,15 @@ function Configuration() {
 	const locations = [
 		{
 			id: 1,
-			name: 'Επιλογή 1',
-			address: '14th km Thessaloniki, Νέα Μουδανιά 570 01',
+			name: 'Αριθμός Συσκ. 1',
+			address: 'Διεύθυνση 1',
 			lat: 40.53623903334093,
 			lng: 23.009268511780395,
 		},
 		{
 			id: 2,
-			name: 'Επιλογή 2',
-			address: 'Εγνατία 156, Θεσσαλονίκη 546 36',
+			name: 'Αριθμός Συσκ. 2',
+			address: 'Διεύθυνση 2',
 			lat: 40.625249019392484,
 			lng: 22.960205055964213,
 		},
@@ -52,7 +52,7 @@ function Configuration() {
 				className='pin-icon'
 			/>
 			<p className='pin-text'>
-				{selectedPin.address} <button onClick={() => handlePinClick(selectedPin)}>click me!</button>
+				{selectedPin.address} <button onClick={() => handlePinClick(selectedPin)}>Click me!</button>
 			</p>
 		</div>
 	);
@@ -66,8 +66,9 @@ function Configuration() {
 			/>
 			<div className='main-conatiner'>
 				<div className='map'>
+					
 					<div className='formofpins'>
-						<label htmlFor='Location'>Choose your location:</label> <br />
+						<label htmlFor='Location'>Παρακαλώ επιλέξτε <br></br> τον αριθμό συσκευής σας:</label> <br />
 						<select
 							id='loc'
 							value={select}
@@ -76,7 +77,7 @@ function Configuration() {
 								value=''
 								name='empty'
 								disabled>
-								Select an option
+								Click me!
 							</option>
 
 							{locations.map((option, i) => (

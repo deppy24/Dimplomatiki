@@ -12,14 +12,14 @@ function Sidebar({ openSidebarToggle, OpenSidebar }) {
 					<Link
 						className='link'
 						to='/DBOARD'>
-						<BsGrid1X2Fill className='icon' /> Informations
+						<BsGrid1X2Fill className='icon' /> Πληροφορίες
 					</Link>
 				</li>
 				<li className='sidebar-list-item'>
 					<Link
 						className='link'
 						to='/Configuration'>
-						<BsGrid1X2Fill className='icon' /> Configuration
+						<BsGrid1X2Fill className='icon' /> Αρχικοποίηση
 					</Link>
 				</li>
 
@@ -27,7 +27,7 @@ function Sidebar({ openSidebarToggle, OpenSidebar }) {
 					<Link
 						className='link'
 						to='/Templates'>
-						<BsMenuButtonWideFill className='icon' /> Charts
+						<BsMenuButtonWideFill className='icon' /> Διαγράμματα
 					</Link>
 				</li>
 			</ul>
