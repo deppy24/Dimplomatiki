@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { BsPeopleFill, BsFillBellFill, BsFillClockFill } from 'react-icons/bs';
+import { useNavigate } from 'react-router-dom';
 
 //Gets current Date and Time (the moment we enter the page or refresh not continuously)
 function getDate() {
@@ -15,6 +16,11 @@ function getDate() {
 
 function Home({ errors1, errors2 }) {
 	const [currentDate, setCurrentDate] = useState(getDate());
+	const navigate = useNavigate();
+
+	const navigateTo = (id) => {
+		navigate(`/Templates?id=${id}`);
+	};
 
 	return (
 		<main className='main-container'>
@@ -43,7 +49,19 @@ function Home({ errors1, errors2 }) {
 						<h3>ALERTS</h3>
 						<BsFillBellFill className='card_icon' />
 					</div>
-					<h1>{`${errors1}|${errors2}`}</h1>
+					<h1>
+						<span
+							className='pointer'
+							onClick={() => {
+								navigateTo(1);
+							}}>{`${errors1}`}</span>
+						|
+						<span
+							className='pointer'
+							onClick={() => {
+								navigateTo(2);
+							}}>{`${errors2}`}</span>
+					</h1>
 				</div>
 			</div>
 
