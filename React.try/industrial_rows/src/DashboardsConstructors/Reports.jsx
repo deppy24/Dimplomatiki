@@ -105,13 +105,14 @@ function Templates({ data1, data2 }) {
 						/>
 					</AreaChart>
 				</ResponsiveContainer>
+
+				<h1>Radar Chart</h1>
 				<div className='spiders'>
-					<h1>Radar Chart</h1>
 					{properties.map((property, i) => (
 						<ResponsiveContainer
 							key={property}
-							width={i < 2 ? '50%' : '33%'}
-							height={400}>
+							width={550}
+							height={300}>
 							<RadarChart
 								cx='50%'
 								cy='50%'

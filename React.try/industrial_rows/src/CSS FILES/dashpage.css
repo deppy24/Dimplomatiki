@@ -49,8 +49,6 @@
 .main-content {
 	height: 50px;
 	margin-top: 200px;
-	
-	
 }
 
 .Tree {
@@ -70,7 +68,6 @@
 		'sidebar main main main';
 	height: 100vh;
 	background-color: #e2e8eb;
-	
 }
 
 #sidebar {
@@ -143,8 +140,16 @@
 	text-align: center;
 }
 
+.spiders {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 100px;
+}
+
 .spiders .recharts-responsive-container {
-	display: inline-block;
+	min-width: 550px;
+	text-align: center;
 }
 
 .main-cards h1 span {
