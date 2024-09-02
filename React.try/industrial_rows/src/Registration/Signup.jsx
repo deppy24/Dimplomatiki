@@ -49,7 +49,7 @@ const Signup = () => {
 				if (request.status === 200) {
 					navigate('/?success');
 				}
-				//ψαξε πως να δειξεις ενα ποπ απ
+				
 				break;
 			case 'loginUpButton':
 				navigate('/');

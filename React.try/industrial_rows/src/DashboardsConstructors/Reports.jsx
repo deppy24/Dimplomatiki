@@ -50,7 +50,7 @@ function Templates({ data1, data2 }) {
 				OpenSidebar={OpenSidebar}
 			/>
 			<div className='main-conatiner'>
-				<h1>Charts</h1>
+				<h1>Area chart</h1>
 				<ResponsiveContainer
 					width='100%'
 					height={400}>
@@ -106,11 +106,13 @@ function Templates({ data1, data2 }) {
 					</AreaChart>
 				</ResponsiveContainer>
 				<div className='spiders'>
+					<h1>Radar Chart</h1>
 					{properties.map((property) => (
 						<ResponsiveContainer
 							key={property}
 							width='20%'
 							height={400}>
+							
 							<RadarChart
 								cx='50%'
 								cy='50%'

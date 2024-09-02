@@ -2,10 +2,10 @@
 
 /*screen's css */
 .map {
-	background-color: gainsboro;
+	background-color: rgb(224, 48, 48);
 }
 .root {
-	background-color: gainsboro;
+	background-color: rgb(35, 169, 68);
 }
 .header {
 	margin-top: 50px;
@@ -39,6 +39,7 @@
 	width: 180px;
 	color: var(--main-blue);
 	width: 15vw;
+	
 }
 
 .pin:hover {
@@ -48,14 +49,15 @@
 .pin-icon {
 	font-size: 4rem !important;
 	font-size: 10vw;
+	
 }
 
 .pin-text {
-	background: rgba(41, 41, 197, 0.9);
+	background: #211a24;
 	border-radius: 10px;
 	padding: 10px;
 	font-size: 1.3em;
-	color: var(--main-blue);
+	color: var(#eeeaef);
 	font-family: 'Times New Roman', Times, serif;
 	font-size: medium;
 	font-weight: lighter;
@@ -77,10 +79,10 @@
 	margin-top: 10px;
 	margin-right: 20px;
 	height: 94%;
-	color:gainsboro;
+	color:rgb(199, 16, 16);
 	
 }
-
+/*
 .circle {
 	background: #ff0000;
 	border-radius: 50%;
@@ -101,7 +103,7 @@
 	top: 50%;
 	transform: translate(-50%, -50%);
 	width: 50%;
-}
+}*/
 
 .tootip:hover {
 	visibility: visible;
